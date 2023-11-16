@@ -1,0 +1,202 @@
+---
+layout: default
+title: Oppose Bike Licensing
+---
+
+<div class="col-md-8">
+            <h3 style="text-align: center;">Call your Council Member:</h3>
+            <h1 style="text-align: center;">Oppose Bike Licensing</h1>
+          </div>
+        </div>
+        <div class="row d-flex justify-content-center pt-3">
+          <div class="col-md-5">
+
+
+
+            <p><strong>Intro 0758-2022 would require all New Yorkers to obtain a license to use an e-bike</strong>, including pedal-assist Citi Bikes. This is a bureaucratic dumpster fire of an idea that would cost New York City taxpayers tens of millions of dollars, fail to address the real source of chaos and danger on our streets, and quickly lead to requirements for all New Yorkers who ride any type of bike to obtain a license.</p>
+
+            
+
+        </div>
+    </div>
+    <div class="row d-flex justify-content-center pt-3">
+        <div class="col-md-7">
+            <h4 style="text-align:center;" class="pb-2" id="call">Enter your address to find your Council Member:</h4>
+
+        <div class="input-group input-group-lg col-sm-8 col-sm-offset-2">
+            <input type="text" class="form-control" placeholder="Enter your address to find who represents you" id="address" name="address" style=" line-height: 30px;">
+            <span class="input-group-btn">
+                <button class="btn btn-primary" type="submit" id="address-search" style="height: 50px; margin-left: 10px;"><i class='fa fa-search'></i> <span class='hidden-xs hidden-sm'>Search</span></button>
+                <button class="btn btn-secondary" type="submit" id="find-me" style="height: 50px;"><i class='fa fa-crosshairs'></i> <span class='hidden-xs hidden-sm'>Find me</span> </button>
+            </span>
+        </div>
+    </div>
+</div>
+<div class="row d-flex justify-content-center">
+    <div class='col-md-7'>
+        <div id='no-response-container' class='text-center' style="display:none;">
+            <h1><i class='fa fa-exclamation-triangle'></i> </h1>
+            <h3>No representatives found</h3>
+            <p>We couldn't find any representatives for that address. Please try again.</p>
+        </div>
+        <div id='response-container' style="display:none;">
+
+            
+
+            <div id='local-container' class="pt-3">
+                <br />
+                <h3 class='text-center pb-3' id="local-name" style="text-transform: uppercase;"></h3>
+                <table id="local-results" class="table table-responsive" style="vertical-align: middle; font-family: 'Inter', sans-serif !important; font-size: 18px;">
+                    <tbody></tbody>
+                </table>
+            </div>
+            <div id='local-container-not-found' style='display: none;' class='text-center'>
+                <h3 class='text-center' id="local-name-not-found"></h3>
+                <p>We couldn't find any representatives for this area</p>
+            </div>
+
+
+            
+        </div>
+    </div>
+</div>
+<div class="row d-flex justify-content-center py-5">
+    <div class='col-md-5'>
+        <p>Not every e-bike, e-scooter, and moped rider is a food delivery worker, but the vast majority are. Silicon Valley companies like DoorDash and Seamless profit off putting these workers, and all New Yorkers, at risk by demanding an impossible volume of high-speed deliveries without training or safety requirements. In addition to laws that prevent battery fires and protect bike lanes with automated enforcement, the City of New York must regulate the companies that are profiting from creating unsafe conditions on our streets.</p>
+        <p>Intro 0758-2022 would mean that hundreds of thousands of New Yorkers who ride bikes every day — whether to take their kids to school, commute to work, or pay their bills — would need to get “licensed” to do so. <strong>We must pull the brakes on this dangerous oversimplification of the problem.</strong></p>
+        <a class='btn btn-primary' href='#call'>Call your council member</a>
+    </div>
+</div>
+</div>
+
+<footer class="mt-3">
+    <div class="container-fluid pt-2">
+        <div class="row">
+            <div class="col-md-12 d-flex justify-content-between">
+              <p class="small">&copy; Copyright 2023 Transportation Alternatives</p>
+              <p class="small"><a href="https://transalt.org/donate" target="_blank">Donate</a> | <a href="https://transalt.org" target="_blank">transalt.org</a> | <a href="#"><i class="bi bi-arrow-up"></i></a></p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- Modal -->
+<div class="modal fade" id="contactModal" tabindex="-1" role="dialog" aria-labelledby="contactModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="contactModalLabel"></h4>
+      </div>
+      <div class="modal-body" id='modalContent'>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default"  data-bs-dismiss="modal"><i class='fa fa-times'></i> Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<script id="tableGuts" type="text/EJS">
+    <% $.each(people, function(i, info){ %>
+        <tr>
+            <td>
+                <strong><%= info.person.name %></strong>,
+                <span class='visible-xs-block visible-sm-block'><%= info.office.name %></span>
+            </td>
+            
+            <% if (info.phones || info.emails){ %>
+                <td class='nowrap' style='text-align:right'>
+                    <button type="button" class="btn btn-primary btn-contact" data-toggle="modal" data-id="<%= info.pseudo_id %>">
+                        Contact <i class='fa fa-chevron-right'></i>
+                    </button>
+                </td>
+            <% } else { %>
+                <td></td>
+            <% } %>
+        </tr>
+    <% }) %>
+</script>
+
+<script id="modalGuts" type="text/EJS">
+    
+    <div class='row' style='font-size:16px'>
+        <div class='col-xs-8'>
+
+            <p><strong>Call <%= info.person.name %> at
+            <% if (info.phones){ %>
+                <% $.each(info.phones, function(i, phone){ %>
+                    <% if ((i + 1) < info.phones.length){ %>
+                        <%= phone %><br />
+                    <% } else { %>
+                        <%= phone %>
+                    <% } %>
+                <% }) %> now.</strong> Tell them that you are their constituent and you want them to oppose Intro 0758-2022.
+                </p>
+                <p>These are the facts: New York City’s streets are chaotic and dangerous. More than 99% of people killed or seriously injured in traffic are struck by cars and trucks. Food delivery app companies are operating unregulated and profiting off a business model that exacerbates the chaos on our streets. And every major city that adopted bike licensing laws saw declines in ridership, and increases in both police stops in communities of color and traffic violence.</p>
+                <p>We need smart effective systemic solutions to these problems — not a defacto bike ban — starting with the regulation of delivery app companies. </p>
+                <a class='btn btn-primary' href='tel:<%= info.phones %>'>Call <%= info.person.name %></a>
+            <% } %>
+
+            
+        </div>
+    </div>
+</script>
+
+<script src="js/lookup_tool.js"></script>
+<script type='text/javascript'>
+  //<![CDATA[
+    var DEBUG = false;
+
+    $(function() {
+
+      var autocomplete = new google.maps.places.Autocomplete(document.getElementById('address'), {types: ['address']});
+
+      $("#address").val(convertToPlainString($.address.parameter('address')));
+
+      var results_level = $.address.parameter('results_level');
+      if (results_level == undefined)
+        results_level = ['local', 'county', 'state', 'federal'];
+      
+      // set levels of government checkboxes
+      if (results_level.indexOf("local") >= 0)
+        $('#show_local_results').prop('checked', true);
+      if (results_level.indexOf("county")  >= 0)
+        $('#show_county_results').prop('checked', true);
+      if (results_level.indexOf("state")  >= 0)
+        $('#show_state_results').prop('checked', true);
+      if (results_level.indexOf("federal")  >= 0)
+        $('#show_federal_results').prop('checked', true);
+
+      $("#results-nav a").click(function(e) {
+        e.preventDefault();
+        var scroll_to = $($("#" + e.target.id).attr('href'));
+        $('html, body').animate({
+            scrollTop: scroll_to.offset().top
+        }, 1000);
+      });
+      
+      $('#find-me').click(function(){
+        findMe(); 
+        return false;
+      });
+      
+      $(":text").keydown(function(e){
+          var key =  e.keyCode ? e.keyCode : e.which;
+          if(key === 13) {
+              $('#address-search').click();
+              return false;
+          }
+      });
+
+      if ($("#address").val()) {
+        if (DEBUG) console.log("search on load")
+        addressSearch();
+      }
+      
+      $('#address-search').click(function(){
+        addressSearch();
+      });
+    });
+  //]]>
+</script>

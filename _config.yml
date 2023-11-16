@@ -1,0 +1,10 @@
+port:  5000
+markdown: kramdown
+name: "Transportation Alternatives"
+url: https://transalt.org
+encoding: utf-8
+timezone: America/New_York
+description: "Contact your Council Member today."
+gems:
+  - jekyll-redirect-from
+google_api_key: AIzaSyD2PcvjZTCZDhSeA8wfrZniOue_q1wcN8E
